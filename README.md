@@ -87,7 +87,7 @@ $msg .= '</body></html>';
   
  
 ## Example 3 
-> Here we look at SMTP Exploits, ( Short Message Transfer Protocol ). 
+> Here we look at SMTP Exploits, ( Simple Message Transfer Protocol ). 
 > This section is still being written.
  
    
