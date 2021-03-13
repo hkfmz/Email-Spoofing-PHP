@@ -87,13 +87,10 @@ $msg .= '</body></html>';
   
  
 ## Example 3 
-> Here we look at SMTP Exploits, ( Simple Mail Transfer Protocol ). 
-> This section is still being written.
+> Here we look at SMTP, the same Changing of From Address occurs.
  
    
+Example 1 & 2.    
+![screen](Screenshot_20210313-174712.jpg).   
+![screen](Screenshot_20210313-174722.jpg)   
 
-
-
-
-
-.
