@@ -88,11 +88,11 @@ $msg .= '</body></html>';
  
 ## Example 3 
 > Here we look at using SMTP (Simple mail transfer protocol), the same Changing of From Address occurs in our SMTP Request.
-Example using PHPMailer SMTP    
-
+Example using PHPMailer SMTP      
+      
 This API Key is for example ONLY, the free domain smtpmail.ml and the address   
-### mailbot@smtpmail.ml   
-arr setup for testing purposes witha limited 100 emails per day.
+### `mailbot@smtpmail.ml`   
+are setup for testing purposes with a limited 100 emails per day, please do not abuse this helpful mailbot setup.
   
 ```
 Host : smtp.sendgrid.net
