@@ -87,7 +87,7 @@ $msg .= '</body></html>';
   
  
 ## Example 3 
-> Here we look at using SMTP (Simple mail transfer protocol), the same Changing of From Address occurs in our SMTP Request.
+> Here we look at using SMTP (Simple mail transfer protocol), the same Changing of From Address occurs in our SMTP Request.   
 Example using PHPMailer SMTP      
       
 This API Key is for example ONLY, the free domain smtpmail.ml and the address   
