@@ -87,8 +87,84 @@ $msg .= '</body></html>';
   
  
 ## Example 3 
-> Here we look at SMTP, the same Changing of From Address occurs.
- 
+> Here we look at using SMTP (Simple mail transfer protocol), the same Changing of From Address occurs in our SMTP Request.
+Example using PHPMailer SMTP    
+
+This API Key is for example ONLY, the free domain smtpmail.ml and the address   
+### mailbot@smtpmail.ml   
+arr setup for testing purposes witha limited 100 emails per day.
+  
+```
+Host : smtp.sendgrid.net
+
+Username : apikey
+Password : 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
+Port : 587
+```   
+By using the provided test Api Key, you are required to read and agree to sendgrid.com's terms and conditions along with the user agreement on Anti Spam and Anti Abuse policy's.
+    
+
+```
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
+$mail = new PHPMailer(true);
+
+
+// setup mail from request ( Post or Get )
+$toEmail = urlDecode($_REQUEST["toEmail"]);
+$toName = urlDecode($_REQUEST["toName"]);
+$fromName = urlDecode($_REQUEST["fromName"]);
+$replyToEmail = urlDecode($_REQUEST["replyToEmail"]);
+$replyToName = urlDecode($_REQUEST["replyToName"]);
+$subject = urlDecode($_REQUEST["subject"]);
+$message = urlDecode($_REQUEST["message"]);
+//$attachment = urlDecode($_REQUEST["attachment"]);
+//$attachmentUrl = urlDecode($_REQUEST["attachmentUrl"]);
+//$cc = urlDecode($_REQUEST["cc"]);
+//$bcc = urlDecode($_REQUEST["bcc"]);
+
+try {
+    //Server settings for sendgrid
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.sendgrid.net';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'apikey';
+    $mail->Password   = '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';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
+
+    //Recipients
+    $mail->setFrom('mailbot@smtpmail.ml', $fromName);
+    $mail->addAddress($toEmail, $toName);
+    $mail->addReplyTo($replyToEmail, $replyToName);
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
+
+    //Attachments
+    //$mail->addAttachment($attachmentUrl);
+    //$mail->addAttachment($attachmentUrl, $attachmentName);
+
+    //Content
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = '<html><body>'.$message.'</body></html>';
+
+    $mail->send();
+    echo 'Message sent successfully to : '.$toEmail;
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+?>   
+```
    
 ## Example 4.    POC.  
 ```   
